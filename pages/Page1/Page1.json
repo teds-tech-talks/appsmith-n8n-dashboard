@@ -1,0 +1,88 @@
+{
+  "unpublishedPage": {
+    "name": "Page1",
+    "slug": "page1",
+    "layouts": [
+      {
+        "viewMode": false,
+        "dsl": {
+          "widgetName": "MainContainer",
+          "backgroundColor": "none",
+          "rightColumn": 4896,
+          "snapColumns": 64,
+          "detachFromLayout": true,
+          "widgetId": "0",
+          "topRow": 0,
+          "bottomRow": 1980,
+          "containerStyle": "none",
+          "snapRows": 124,
+          "parentRowSpace": 1,
+          "type": "CANVAS_WIDGET",
+          "canExtend": true,
+          "version": 86,
+          "minHeight": 1292,
+          "dynamicTriggerPathList": [],
+          "parentColumnSpace": 1,
+          "dynamicBindingPathList": [],
+          "leftColumn": 0
+        },
+        "layoutOnLoadActions": [
+          [
+            {
+              "id": "Page1_n8n_get_exec",
+              "name": "n8n_get_exec",
+              "confirmBeforeExecute": false,
+              "pluginType": "API",
+              "jsonPathKeys": [],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "Page1_n8n_get_wf",
+              "name": "n8n_get_wf",
+              "confirmBeforeExecute": false,
+              "pluginType": "API",
+              "jsonPathKeys": [],
+              "timeoutInMillisecond": 10000
+            }
+          ],
+          [
+            {
+              "id": "Page1_JSObject.prepare_workflows",
+              "name": "JSObject.prepare_workflows",
+              "collectionId": "Page1_JSObject",
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "function () {\n  var all_wf = n8n_get_wf.data.data;\n  all_wf = _.map(all_wf, _.partialRight(_.pick, ['name', 'id', 'createdAt', 'updatedAt', 'active']));\n  _.each(all_wf, function (item) {\n    let createdAt_ = item.createdAt.split('T');\n    item.createdAt = `${createdAt_[0]} ${createdAt_[1].substring(0, 5)}`;\n    let updatedAt_ = item.updatedAt.split('T');\n    item.updatedAt = `${updatedAt_[0]} ${updatedAt_[1].substring(0, 5)}`;\n    item.urltext = appsmith.store.n8nurl + '/workflow/' + item.id;\n  });\n  return all_wf;\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ],
+          [
+            {
+              "id": "Page1_JSObject.store_globals",
+              "name": "JSObject.store_globals",
+              "collectionId": "Page1_JSObject",
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "function () {\n  storeValue('n8nurl', 'https://automate.byuroscope.com', true);\n  JSObject.show_all_wf();\n  JSObject.execution_table = JSObject.prepare_executions();\n  JSObject.overview_stats = JSObject.get_overview_stats();\n  return 1;\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ]
+        ],
+        "layoutOnLoadActionErrors": [],
+        "validOnPageLoadActions": true,
+        "id": "Page1",
+        "deleted": false,
+        "policies": [],
+        "userPermissions": []
+      }
+    ],
+    "userPermissions": [],
+    "policies": []
+  },
+  "deleted": false,
+  "gitSyncId": "6529a7883c26b66c5d6ee48d_6529a7883c26b66c5d6ee48f"
+}

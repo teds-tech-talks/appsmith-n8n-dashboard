@@ -1,0 +1,28 @@
+{
+  "unpublishedCollection": {
+    "name": "JSObject",
+    "pageId": "Page1",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "actions": [],
+    "archivedActions": [],
+    "variables": [
+      {
+        "name": "workflow_table",
+        "value": "[]"
+      },
+      {
+        "name": "execution_table",
+        "value": "[]"
+      },
+      {
+        "name": "overview_stats",
+        "value": "{\n  total_wf: null,\n  active_wf: null,\n  recent_wf: null\n}"
+      }
+    ],
+    "userPermissions": []
+  },
+  "id": "Page1_JSObject",
+  "deleted": false,
+  "gitSyncId": "6529a7883c26b66c5d6ee48d_6529aab73c26b66c5d6ee4ac"
+}
