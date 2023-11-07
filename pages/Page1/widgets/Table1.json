@@ -75,7 +75,10 @@
         "active",
         "customColumn1"
     ],
-    "dynamicPropertyPathList": [{"key": "tableData"}],
+    "dynamicPropertyPathList": [
+        {"key": "tableData"},
+        {"key": "primaryColumns.customColumn1.onClick"}
+    ],
     "compactMode": "SHORT",
     "displayName": "Table",
     "bottomRow": 56,

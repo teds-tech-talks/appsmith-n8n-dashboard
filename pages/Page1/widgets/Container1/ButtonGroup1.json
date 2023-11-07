@@ -3,6 +3,7 @@
     "mobileBottomRow": 8,
     "widgetName": "ButtonGroup1",
     "isCanvas": false,
+    "dynamicPropertyPathList": [{"key": "groupButtons.groupButtongv7e388h3b.onClick"}],
     "displayName": "Button Group",
     "iconSVG": "/static/media/icon.bb8db4853027d74a78963c3375841e4b.svg",
     "searchTags": [
@@ -15,6 +16,7 @@
     "type": "BUTTON_GROUP_WIDGET",
     "groupButtons": {
         "groupButtongv7e388h3b": {
+            "onClick": "{{showModal('Modal_about');}}",
             "buttonType": "SIMPLE",
             "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
             "iconName": "help",
@@ -76,6 +78,7 @@
             "isDisabled": true
         },
         "groupButton1": {
+            "onClick": "",
             "buttonType": "SIMPLE",
             "iconName": "heat-grid",
             "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
@@ -106,7 +109,10 @@
     "mobileRightColumn": 44,
     "animateLoading": true,
     "parentColumnSpace": 19.5,
-    "dynamicTriggerPathList": [],
+    "dynamicTriggerPathList": [
+        {"key": "groupButtons.groupButton1.onClick"},
+        {"key": "groupButtons.groupButtongv7e388h3b.onClick"}
+    ],
     "leftColumn": 41,
     "dynamicBindingPathList": [
         {"key": "borderRadius"},

@@ -28,14 +28,21 @@ export default {
 			let start_ = moment(item.startedAt);
 			let stop_ = moment(item.stoppedAt);
 			item.Duration = parseFloat((stop_.diff(start_, 'milliseconds')*0.001).toFixed(3));
-			item.x=item.startedAt.replace('T','\n').split(".")[0];
-			item.y=item.Duration;
+			item.label=item.startedAt.replace('T','\n').split(".")[0];
+			item.value=item.Duration;
+			item.color=(item.finished ? "#85AD8B" : "#E8816D");
 		});
 		
 		return 		_.sortBy(all_exec, function(item) {
   							return parseInt(item.id);
 							});
 	},
+	
+	/*
+	show_current_wf_executions(wf_id) {
+		
+	}
+	*/
 
 // Prepare an array of all workflows
 	prepare_workflows () {
