@@ -3,7 +3,10 @@
     "mobileBottomRow": 8,
     "widgetName": "ButtonGroup1",
     "isCanvas": false,
-    "dynamicPropertyPathList": [{"key": "groupButtons.groupButtongv7e388h3b.onClick"}],
+    "dynamicPropertyPathList": [
+        {"key": "groupButtons.groupButtongv7e388h3b.onClick"},
+        {"key": "groupButtons.groupButton74dofjgr68.onClick"}
+    ],
     "displayName": "Button Group",
     "iconSVG": "/static/media/icon.bb8db4853027d74a78963c3375841e4b.svg",
     "searchTags": [
@@ -16,7 +19,7 @@
     "type": "BUTTON_GROUP_WIDGET",
     "groupButtons": {
         "groupButton74dofjgr68": {
-            "onClick": "{{showModal('Modal_enterAPI');}}",
+            "onClick": "{{\nawait Tabs1.setVisibility(false);\nawait removeValue('n8napi');\nawait removeValue('n8nurl');\nJSObject.store_globals();}}",
             "buttonType": "SIMPLE",
             "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
             "iconName": "reset",
@@ -128,7 +131,7 @@
         {"key": "groupButtons.groupButtongv7e388h3b.onClick"},
         {"key": "groupButtons.groupButton74dofjgr68.onClick"}
     ],
-    "leftColumn": 41,
+    "leftColumn": 35,
     "dynamicBindingPathList": [
         {"key": "borderRadius"},
         {"key": "groupButtons.groupButton1.buttonColor"},
