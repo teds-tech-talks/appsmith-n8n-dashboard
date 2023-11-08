@@ -5,6 +5,7 @@ export default {
 	
 	async store_globals () {
 		await storeValue('tabpage','Loading',true);
+		this.overview_stats = {total_wf:null, active_wf:null, recent_wf:null};
 
 		if(!(!!appsmith.store.n8napi && !!appsmith.store.n8nurl)) {
 			showModal('Modal_enterAPI');
