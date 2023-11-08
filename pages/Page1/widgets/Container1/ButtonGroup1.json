@@ -15,6 +15,20 @@
     "parentRowSpace": 10,
     "type": "BUTTON_GROUP_WIDGET",
     "groupButtons": {
+        "groupButton74dofjgr68": {
+            "onClick": "{{showModal('Modal_enterAPI');}}",
+            "buttonType": "SIMPLE",
+            "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+            "iconName": "reset",
+            "widgetId": "n3rhnna2hs",
+            "menuItems": {},
+            "index": 4,
+            "id": "groupButton74dofjgr68",
+            "label": "Reset",
+            "placement": "CENTER",
+            "isDisabled": false,
+            "isVisible": true
+        },
         "groupButtongv7e388h3b": {
             "onClick": "{{showModal('Modal_about');}}",
             "buttonType": "SIMPLE",
@@ -111,7 +125,8 @@
     "parentColumnSpace": 19.5,
     "dynamicTriggerPathList": [
         {"key": "groupButtons.groupButton1.onClick"},
-        {"key": "groupButtons.groupButtongv7e388h3b.onClick"}
+        {"key": "groupButtons.groupButtongv7e388h3b.onClick"},
+        {"key": "groupButtons.groupButton74dofjgr68.onClick"}
     ],
     "leftColumn": 41,
     "dynamicBindingPathList": [
@@ -119,7 +134,8 @@
         {"key": "groupButtons.groupButton1.buttonColor"},
         {"key": "groupButtons.groupButton2.buttonColor"},
         {"key": "groupButtons.groupButton3.buttonColor"},
-        {"key": "groupButtons.groupButtongv7e388h3b.buttonColor"}
+        {"key": "groupButtons.groupButtongv7e388h3b.buttonColor"},
+        {"key": "groupButtons.groupButton74dofjgr68.buttonColor"}
     ],
     "key": "oudv0dq26f",
     "orientation": "horizontal",
