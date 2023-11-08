@@ -3,7 +3,7 @@
     "boxShadow": "none",
     "mobileBottomRow": 22,
     "widgetName": "Button2",
-    "onClick": "{{await storeValue('n8napi',Input_api.text,true);\nawait storeValue('n8nurl',Input_url.text,true);\nawait closeModal('Modal_enterAPI');\nJSObject.store_globals();\n}}",
+    "onClick": "{{await storeValue('n8napi',Input_api.text,false);\nawait storeValue('n8nurl',Input_url.text,false);\nawait closeModal('Modal_enterAPI');\nJSObject.store_globals();\n}}",
     "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
     "dynamicPropertyPathList": [{"key": "onClick"}],
     "displayName": "Button",

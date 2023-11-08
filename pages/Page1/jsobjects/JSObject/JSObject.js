@@ -5,9 +5,7 @@ export default {
 	
 	async store_globals () {
 		await storeValue('tabpage','Loading',true);
-		console.log('============');
-		console.log(!!appsmith.store.n8napi && !!appsmith.store.n8nurl);
-		console.log(!(!!appsmith.store.n8napi && !!appsmith.store.n8nurl));
+
 		if(!(!!appsmith.store.n8napi && !!appsmith.store.n8nurl)) {
 			showModal('Modal_enterAPI');
 		} else {

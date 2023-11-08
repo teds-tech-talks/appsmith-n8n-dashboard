@@ -13,7 +13,7 @@
           "detachFromLayout": true,
           "widgetId": "0",
           "topRow": 0,
-          "bottomRow": 380,
+          "bottomRow": 960,
           "containerStyle": "none",
           "snapRows": 124,
           "parentRowSpace": 1,
@@ -35,7 +35,7 @@
               "confirmBeforeExecute": false,
               "pluginType": "JS",
               "jsonPathKeys": [
-                "async function () {\n  await storeValue('tabpage', 'Loading', true);\n  console.log('============');\n  console.log(!!appsmith.store.n8napi && !!appsmith.store.n8nurl);\n  console.log(!(!!appsmith.store.n8napi && !!appsmith.store.n8nurl));\n  if (!(!!appsmith.store.n8napi && !!appsmith.store.n8nurl)) {\n    showModal('Modal_enterAPI');\n  } else {\n    Tabs1.setVisibility(true);\n    await n8n_get_exec.run();\n    await n8n_get_wf.run();\n    JSObject.show_all_wf();\n    JSObject.execution_table = JSObject.prepare_executions();\n    JSObject.overview_stats = JSObject.get_overview_stats();\n    await storeValue('tabpage', 'Dashboard', true);\n  }\n  return 1;\n}"
+                "async function () {\n  await storeValue('tabpage', 'Loading', true);\n  if (!(!!appsmith.store.n8napi && !!appsmith.store.n8nurl)) {\n    showModal('Modal_enterAPI');\n  } else {\n    Tabs1.setVisibility(true);\n    await n8n_get_exec.run();\n    await n8n_get_wf.run();\n    JSObject.show_all_wf();\n    JSObject.execution_table = JSObject.prepare_executions();\n    JSObject.overview_stats = JSObject.get_overview_stats();\n    await storeValue('tabpage', 'Dashboard', true);\n  }\n  return 1;\n}"
               ],
               "timeoutInMillisecond": 10000
             }
