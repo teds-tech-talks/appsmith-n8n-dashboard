@@ -3,11 +3,26 @@ export default {
 	execution_table: [],
 	overview_stats: {total_wf:null, active_wf:null, recent_wf:null},
 	
-	store_globals () {
-		storeValue('n8nurl','https://automate.byuroscope.com',true);
-		this.show_all_wf();
-		this.execution_table = this.prepare_executions();
-		this.overview_stats  = this.get_overview_stats();
+	async store_globals () {
+		await storeValue('tabpage','Loading',true);
+		console.log('============');
+		console.log(!!appsmith.store.n8napi && !!appsmith.store.n8nurl);
+		console.log(!(!!appsmith.store.n8napi && !!appsmith.store.n8nurl));
+		if(!(!!appsmith.store.n8napi && !!appsmith.store.n8nurl)) {
+			showModal('Modal_enterAPI');
+		} else {
+			Tabs1.setVisibility(true);
+			
+			await n8n_get_exec.run();
+			await n8n_get_wf.run();
+			
+			this.show_all_wf();
+			this.execution_table = this.prepare_executions();
+			this.overview_stats  = this.get_overview_stats();
+
+			await storeValue('tabpage','Dashboard',true);
+		}
+		//Tabs1.setVisibility(false);
 		return 1;
 	},
 	
