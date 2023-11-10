@@ -1,8 +1,9 @@
 export default {
 	workflow_table: [],
-	execution_table: [],
-	overview_stats: {total_wf:null, active_wf:null, recent_wf:null},
-	
+	all_executions: [],
+	all_workflows: [],
+	overview_stats: {total_wf:null, active_wf:null, recent_wf:null, recent_runs:null},
+
 	async store_globals () {
 		await storeValue('tabpage','Loading',true);
 		this.overview_stats = {total_wf:null, active_wf:null, recent_wf:null};
@@ -11,31 +12,51 @@ export default {
 			showModal('Modal_enterAPI');
 		} else {
 			Tabs1.setVisibility(true);
-			
-			await n8n_get_exec.run();
-			await n8n_get_wf.run();
-			
-			this.show_all_wf();
-			this.execution_table = this.prepare_executions();
+
+			var bla2 = await this.prepare_executions();
+			this.all_executions = bla2;
+
+			var bla1 = await this.prepare_workflows();
+			this.all_workflows  = bla1;
+
 			this.overview_stats  = this.get_overview_stats();
+
+			this.show_all_wf();
 
 			await storeValue('tabpage','Dashboard',true);
 		}
 		//Tabs1.setVisibility(false);
 		return 1;
 	},
-	
-	get_overview_stats() {
-		var all_exec = n8n_get_exec.data.data;
-		var all_wf = n8n_get_wf.data.data;
 
-		var return_ = {total_wf:all_wf.length, active_wf:_.filter(all_wf,{'active': true }).length, recent_wf:_.uniqBy(all_exec, 'workflowId').length};
-		
+	get_overview_stats() {
+		var all_exec = this.all_executions;
+		var all_wf   = this.all_workflows;
+
+		var return_ = {total_wf:all_wf.length,
+									 active_wf:_.filter(all_wf,{'active': true }).length,
+									 recent_wf:_.uniqBy(all_exec, 'workflowId').length,
+									 recent_runs:all_exec.length};
+
 		return return_;
 	},	
-	
-	prepare_executions() {
+
+	async prepare_executions() {
+		await n8n_get_exec.run();
 		var all_exec = n8n_get_exec.data.data;
+
+		// if there are more results than for one page
+		// limit to 4 iterations, which gives up to 1000 items
+		for (let i = 0; i < 3; i++) {
+			var nextcursor_ = n8n_get_exec.data.nextCursor;
+			if(nextcursor_) {
+				await n8n_get_exec_nextpage.run({cursor:nextcursor_});
+				//console.log(all_exec.length);
+				all_exec = all_exec.concat(n8n_get_exec_nextpage.data.data);
+				//console.log(all_exec.length);
+				nextcursor_ = n8n_get_exec_nextpage.data.nextCursor;
+			} else { break; }
+		}
 
 		_.each(all_exec, function(item) {
 			// calculate the duration in seconds
@@ -46,47 +67,62 @@ export default {
 			item.value=item.Duration;
 			item.color=(item.finished ? "#85AD8B" : "#E8816D");
 		});
-		
-		return 		_.sortBy(all_exec, function(item) {
-  							return parseInt(item.id);
-							});
+		console.log(all_exec.length);
+		return 	_.sortBy(all_exec, function(item) {
+			return parseInt(item.id);
+		});
 	},
-	
-	/*
-	show_current_wf_executions(wf_id) {
-		
-	}
-	*/
 
-// Prepare an array of all workflows
-	prepare_workflows () {
+
+
+	// Prepare an array of all workflows
+	async prepare_workflows () {
+		await n8n_get_wf.run();
 		var all_wf = n8n_get_wf.data.data;
+
+		// if there are more results than for one page
+		// limit to 4 iterations, which gives up to 1000 items
+		for (let i = 0; i < 3; i++) {
+			var nextcursor_ = n8n_get_wf.data.nextCursor;
+			if(nextcursor_) {
+				await n8n_get_wf_nextpage.run({cursor:nextcursor_});
+				//console.log(all_exec.length);
+				all_wf = all_wf.concat(n8n_get_wf_nextpage.data.data);
+				//console.log(all_exec.length);
+				nextcursor_ = n8n_get_wf_nextpage.data.nextCursor;
+			} else { break; }
+		}
+
 		all_wf = _.map(all_wf, _.partialRight(_.pick, ['name', 'id', 'createdAt', 'updatedAt', 'active']));
+
+		let recent_ids = _.countBy(this.all_executions, 'workflowId');
+		console.log(recent_ids);
 		
 		_.each(all_wf, function(item) {
 			let createdAt_ = item.createdAt.split('T');
 			item.createdAt = `${createdAt_[0]} ${createdAt_[1].substring(0, 5)}`;
-			
+
 			let updatedAt_ = item.updatedAt.split('T');
 			item.updatedAt = `${updatedAt_[0]} ${updatedAt_[1].substring(0, 5)}`;
-			
+			item.exec_count= recent_ids[item.id]||null;
+			item.recent_run= !!recent_ids[item.id];
 			item.urltext = appsmith.store.n8nurl+'/workflow/'+item.id;
 		});
 		return all_wf;
 	},
-	
+
 	show_all_wf() {
-		this.workflow_table = this.prepare_workflows();
+		this.workflow_table = this.all_workflows;
 	},
-	
+
 	show_active_wf() {
-		this.workflow_table = _.filter(this.prepare_workflows(),{'active': true });
+		this.workflow_table = _.filter(this.all_workflows,{'active': true });
 	},
-	
+
 	show_recent_wf() {
-		var recent_ids = _.uniqBy(n8n_get_exec.data.data, 'workflowId').map(obj => obj.workflowId); //workflowId
-		console.log(recent_ids);
-		this.workflow_table = _.filter(this.prepare_workflows(), function(o) { return _.includes(recent_ids, o.id); });
+		var recent_ids = _.uniqBy(this.all_executions, 'workflowId').map(obj => obj.workflowId); //workflowId
+		//console.log(recent_ids);
+		this.workflow_table = _.filter(this.all_workflows, function(o) { return _.includes(recent_ids, o.id); });
 	},	
-	
+
 }

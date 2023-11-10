@@ -25,7 +25,7 @@
     ],
     "shouldTruncate": false,
     "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
-    "text": "Recently run",
+    "text": "Recent executions",
     "key": "j5p0ivkf5y",
     "isDeprecated": false,
     "rightColumn": 47,

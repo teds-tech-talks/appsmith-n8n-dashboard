@@ -25,7 +25,7 @@
     ],
     "shouldTruncate": false,
     "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
-    "text": "Please enter your:\n- n8n instance API key and;\n- the URL of the n8n instance.\nPress <b>Confirm<\/b> button after that.\n\nIf you close this window without entering these details, the dashboard will not work. You can click on the <b>Reset<\/b> button.",
+    "text": "Please enter your:\n- <a href=\"https://fas.st/t/idH9ZSyP\" target=\"_blank\" rel=\"noopener noreferrer\">n8n<\/a> instance API key and;\n- the URL of the <a href=\"https://fas.st/t/idH9ZSyP\" target=\"_blank\" rel=\"noopener noreferrer\">n8n<\/a> instance.\nPress <b>Confirm<\/b> button after that.\n\nIf you close this window without entering these details, the dashboard will not work. You can click on the <b>Reset<\/b> button.",
     "key": "ryl06u0j7u",
     "isDeprecated": false,
     "rightColumn": 63,

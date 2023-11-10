@@ -6,8 +6,8 @@
     "isCanvas": true,
     "displayName": "Tabs",
     "iconSVG": "/static/media/icon.9e3d67c0af9c0bd092dc56240314e18a.svg",
-    "topRow": 17,
-    "bottomRow": 96,
+    "topRow": 16,
+    "bottomRow": 95,
     "parentRowSpace": 10,
     "type": "TABS_WIDGET",
     "hideCard": false,
@@ -149,10 +149,10 @@
     "isLoading": false,
     "mobileTopRow": 99,
     "responsiveBehavior": "fill",
-    "originalTopRow": 17,
+    "originalTopRow": 16,
     "borderRadius": "0px",
     "mobileLeftColumn": 0,
     "maxDynamicHeight": 9000,
-    "originalBottomRow": 32,
+    "originalBottomRow": 95,
     "minDynamicHeight": 15
 }
