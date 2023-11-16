@@ -2,7 +2,11 @@ export default {
 	workflow_table: [],
 	all_executions: [],
 	all_workflows: [],
+	raw_wf_data: [],
 	overview_stats: {total_wf:null, active_wf:null, recent_wf:null, recent_runs:null},
+
+	workflow_docs: "Empty doc",
+	workflow_metrics: "Empty metrics",
 
 	async store_globals () {
 		await storeValue('tabpage','Loading',true);
@@ -47,8 +51,8 @@ export default {
 
 		// if there are more results than for one page
 		// limit to 4 iterations, which gives up to 1000 items
+		var nextcursor_ = n8n_get_exec.data.nextCursor;
 		for (let i = 0; i < 3; i++) {
-			var nextcursor_ = n8n_get_exec.data.nextCursor;
 			if(nextcursor_) {
 				await n8n_get_exec_nextpage.run({cursor:nextcursor_});
 				//console.log(all_exec.length);
@@ -65,7 +69,7 @@ export default {
 			item.Duration = parseFloat((stop_.diff(start_, 'milliseconds')*0.001).toFixed(3));
 			item.label=item.startedAt.replace('T','\n').split(".")[0];
 			item.value=item.Duration;
-			item.color=(item.finished ? "#85AD8B" : "#E8816D");
+			item.color=(item.finished ? chroma(appsmith.theme.colors.primaryColor).brighten(0.5).hex() : chroma(appsmith.theme.colors.primaryColor).set('hsl.h', (chroma(appsmith.theme.colors.primaryColor).get('hsl.h') + 45*3) % 360).hex());
 		});
 		console.log(all_exec.length);
 		return 	_.sortBy(all_exec, function(item) {
@@ -82,16 +86,16 @@ export default {
 
 		// if there are more results than for one page
 		// limit to 4 iterations, which gives up to 1000 items
+		var nextcursor_ = n8n_get_wf.data.nextCursor;
 		for (let i = 0; i < 3; i++) {
-			var nextcursor_ = n8n_get_wf.data.nextCursor;
 			if(nextcursor_) {
 				await n8n_get_wf_nextpage.run({cursor:nextcursor_});
-				//console.log(all_exec.length);
 				all_wf = all_wf.concat(n8n_get_wf_nextpage.data.data);
-				//console.log(all_exec.length);
 				nextcursor_ = n8n_get_wf_nextpage.data.nextCursor;
 			} else { break; }
 		}
+		
+		this.raw_wf_data = all_wf;
 
 		all_wf = _.map(all_wf, _.partialRight(_.pick, ['name', 'id', 'createdAt', 'updatedAt', 'active']));
 
@@ -123,6 +127,19 @@ export default {
 		var recent_ids = _.uniqBy(this.all_executions, 'workflowId').map(obj => obj.workflowId); //workflowId
 		//console.log(recent_ids);
 		this.workflow_table = _.filter(this.all_workflows, function(o) { return _.includes(recent_ids, o.id); });
-	},	
+	},
+	
+	create_workflow_metrics(id) {
+		var wf_text = "";
+		if(id){
+			var wf_text = _.find(this.raw_wf_data, function(obj) { return obj.id == id; });
+		}
+		this.workflow_metrics = wf_text;
+		return 1;
+	}
 
 }
+
+
+
+//

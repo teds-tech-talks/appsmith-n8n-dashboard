@@ -1,11 +1,13 @@
 {
     "boxShadow": "none",
     "mobileBottomRow": 8,
-    "widgetName": "ButtonGroup1",
+    "widgetName": "Button_topmenu",
     "isCanvas": false,
     "dynamicPropertyPathList": [
         {"key": "groupButtons.groupButtongv7e388h3b.onClick"},
-        {"key": "groupButtons.groupButton74dofjgr68.onClick"}
+        {"key": "groupButtons.groupButton74dofjgr68.onClick"},
+        {"key": "groupButtons.groupButton3.onClick"},
+        {"key": "groupButtons.groupButton1.onClick"}
     ],
     "displayName": "Button Group",
     "iconSVG": "/static/media/icon.bb8db4853027d74a78963c3375841e4b.svg",
@@ -25,7 +27,7 @@
             "iconName": "reset",
             "widgetId": "n3rhnna2hs",
             "menuItems": {},
-            "index": 4,
+            "index": 3,
             "id": "groupButton74dofjgr68",
             "label": "Reset",
             "placement": "CENTER",
@@ -39,7 +41,7 @@
             "iconName": "help",
             "widgetId": "l8h2fp76dw",
             "menuItems": {},
-            "index": 3,
+            "index": 2,
             "id": "groupButtongv7e388h3b",
             "label": "About",
             "placement": "CENTER",
@@ -47,6 +49,7 @@
             "isVisible": true
         },
         "groupButton3": {
+            "onClick": "{{storeValue('tabpage','AutoDoc')}}",
             "buttonType": "SIMPLE",
             "iconName": "new-drawing",
             "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
@@ -87,15 +90,15 @@
                     "isDisabled": false
                 }
             },
-            "index": 2,
+            "index": 1,
             "label": "Docs",
             "id": "groupButton3",
             "placement": "CENTER",
             "isVisible": true,
-            "isDisabled": true
+            "isDisabled": false
         },
         "groupButton1": {
-            "onClick": "",
+            "onClick": "{{storeValue('tabpage','Dashboard')}}",
             "buttonType": "SIMPLE",
             "iconName": "heat-grid",
             "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
@@ -107,19 +110,6 @@
             "placement": "CENTER",
             "isVisible": true,
             "isDisabled": false
-        },
-        "groupButton2": {
-            "buttonType": "SIMPLE",
-            "iconName": "confirm",
-            "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
-            "widgetId": "",
-            "menuItems": {},
-            "index": 1,
-            "label": "Quality",
-            "id": "groupButton2",
-            "placement": "CENTER",
-            "isVisible": true,
-            "isDisabled": true
         }
     },
     "hideCard": false,
@@ -129,13 +119,13 @@
     "dynamicTriggerPathList": [
         {"key": "groupButtons.groupButton1.onClick"},
         {"key": "groupButtons.groupButtongv7e388h3b.onClick"},
-        {"key": "groupButtons.groupButton74dofjgr68.onClick"}
+        {"key": "groupButtons.groupButton74dofjgr68.onClick"},
+        {"key": "groupButtons.groupButton3.onClick"}
     ],
-    "leftColumn": 35,
+    "leftColumn": 41,
     "dynamicBindingPathList": [
         {"key": "borderRadius"},
         {"key": "groupButtons.groupButton1.buttonColor"},
-        {"key": "groupButtons.groupButton2.buttonColor"},
         {"key": "groupButtons.groupButton3.buttonColor"},
         {"key": "groupButtons.groupButtongv7e388h3b.buttonColor"},
         {"key": "groupButtons.groupButton74dofjgr68.buttonColor"}

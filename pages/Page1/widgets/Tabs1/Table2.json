@@ -66,7 +66,7 @@
     "primaryColumnId": "name",
     "defaultSelectedRowIndices": [0],
     "mobileBottomRow": 43,
-    "widgetName": "Table1",
+    "widgetName": "Table2",
     "defaultPageSize": 0,
     "columnOrder": [
         "name",
@@ -81,7 +81,8 @@
     ],
     "dynamicPropertyPathList": [
         {"key": "tableData"},
-        {"key": "primaryColumns.customColumn1.onClick"}
+        {"key": "primaryColumns.customColumn1.onClick"},
+        {"key": "onRowSelected"}
     ],
     "compactMode": "SHORT",
     "displayName": "Table",
@@ -99,11 +100,14 @@
     "hideCard": false,
     "mobileRightColumn": 35,
     "parentColumnSpace": 24.71875,
-    "dynamicTriggerPathList": [{"key": "primaryColumns.customColumn1.onClick"}],
+    "dynamicTriggerPathList": [
+        {"key": "primaryColumns.customColumn1.onClick"},
+        {"key": "onRowSelected"}
+    ],
     "borderWidth": "1",
     "primaryColumns": {
         "createdAt": {
-            "computedValue": "{{Table1.processedTableData.map((currentRow, currentIndex) => ( currentRow[\"createdAt\"]))}}",
+            "computedValue": "{{Table2.processedTableData.map((currentRow, currentIndex) => ( currentRow[\"createdAt\"]))}}",
             "isEditable": false,
             "alias": "createdAt",
             "enableSort": true,
@@ -130,7 +134,7 @@
             "verticalAlignment": "CENTER"
         },
         "exec_count": {
-            "computedValue": "{{Table1.processedTableData.map((currentRow, currentIndex) => ( currentRow[\"exec_count\"]))}}",
+            "computedValue": "{{Table2.processedTableData.map((currentRow, currentIndex) => ( currentRow[\"exec_count\"]))}}",
             "isEditable": false,
             "alias": "exec_count",
             "enableSort": true,
@@ -160,7 +164,7 @@
             "verticalAlignment": "CENTER"
         },
         "urltext": {
-            "computedValue": "{{Table1.processedTableData.map((currentRow, currentIndex) => ( currentRow[\"urltext\"]))}}",
+            "computedValue": "{{Table2.processedTableData.map((currentRow, currentIndex) => ( currentRow[\"urltext\"]))}}",
             "isEditable": false,
             "alias": "urltext",
             "enableSort": true,
@@ -190,7 +194,7 @@
             "verticalAlignment": "CENTER"
         },
         "recent_run": {
-            "computedValue": "{{Table1.processedTableData.map((currentRow, currentIndex) => ( currentRow[\"recent_run\"]))}}",
+            "computedValue": "{{Table2.processedTableData.map((currentRow, currentIndex) => ( currentRow[\"recent_run\"]))}}",
             "isEditable": false,
             "alias": "recent_run",
             "enableSort": true,
@@ -220,7 +224,7 @@
             "verticalAlignment": "CENTER"
         },
         "name": {
-            "computedValue": "{{Table1.processedTableData.map((currentRow, currentIndex) => ( currentRow[\"name\"]))}}",
+            "computedValue": "{{Table2.processedTableData.map((currentRow, currentIndex) => ( currentRow[\"name\"]))}}",
             "isEditable": false,
             "alias": "name",
             "enableSort": true,
@@ -247,7 +251,7 @@
             "verticalAlignment": "CENTER"
         },
         "active": {
-            "computedValue": "{{Table1.processedTableData.map((currentRow, currentIndex) => ( currentRow[\"active\"]))}}",
+            "computedValue": "{{Table2.processedTableData.map((currentRow, currentIndex) => ( currentRow[\"active\"]))}}",
             "isEditable": false,
             "alias": "active",
             "enableSort": true,
@@ -278,7 +282,7 @@
         },
         "customColumn1": {
             "computedValue": "",
-            "onClick": "{{navigateTo(Table1.triggeredRow.urltext, {}, 'NEW_WINDOW');}}",
+            "onClick": "{{navigateTo(Table2.triggeredRow.urltext, {}, 'NEW_WINDOW');}}",
             "isEditable": false,
             "alias": "URL",
             "enableSort": true,
@@ -309,7 +313,7 @@
             "verticalAlignment": "CENTER"
         },
         "id": {
-            "computedValue": "{{Table1.processedTableData.map((currentRow, currentIndex) => ( currentRow[\"id\"]))}}",
+            "computedValue": "{{Table2.processedTableData.map((currentRow, currentIndex) => ( currentRow[\"id\"]))}}",
             "isEditable": false,
             "alias": "id",
             "enableSort": true,
@@ -336,7 +340,7 @@
             "verticalAlignment": "CENTER"
         },
         "updatedAt": {
-            "computedValue": "{{Table1.processedTableData.map((currentRow, currentIndex) => ( currentRow[\"updatedAt\"]))}}",
+            "computedValue": "{{Table2.processedTableData.map((currentRow, currentIndex) => ( currentRow[\"updatedAt\"]))}}",
             "isEditable": false,
             "alias": "updatedAt",
             "enableSort": true,
@@ -363,18 +367,19 @@
             "verticalAlignment": "CENTER"
         }
     },
+    "onRowSelected": "{{JSObject.create_workflow_metrics(Table2.selectedRow.id)}}",
     "key": "rt1oslhe5z",
     "canFreezeColumn": true,
     "isDeprecated": false,
     "rightColumn": 64,
     "textSize": "0.875rem",
-    "widgetId": "nmf8hgqgda",
+    "widgetId": "l73mr8bgy9",
     "enableServerSideFiltering": false,
     "minWidth": 450,
     "tableData": "{{JSObject.workflow_table}}",
     "label": "Data",
     "searchKey": "",
-    "parentId": "mo34twwfuq",
+    "parentId": "qyz8fkew7j",
     "serverSidePaginationEnabled": true,
     "renderMode": "CANVAS",
     "mobileTopRow": 15,
