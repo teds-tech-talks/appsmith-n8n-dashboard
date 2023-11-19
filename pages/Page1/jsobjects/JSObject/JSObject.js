@@ -167,8 +167,12 @@ export default {
 	
 	// 
 	async get_wf_autodoc(id,type="short"){
-		var system_prompt = `You are an expert technical writer and your task is to prepare a documentation for the workflow, which was created in n8n - a workflow automation tool. You will receive a JSON containing the workflow data. You need to analyse it and prepare a documentation text accoring to the user request. Include the timestamp of the generated documentation page: ${moment().format("DD MMM dddd, YYYY HH:mm")} . Please return you reply in a markdown format`;
 		
+		var system_prompt = `You are an expert technical writer and your task is to prepare a documentation for the workflow, which was created in n8n - a workflow automation tool. You will receive a JSON containing the workflow data. You need to analyse it and prepare a documentation text accoring to the user request. Include the timestamp of the generated documentation page: ${moment().format("DD MMM dddd, YYYY HH:mm")} . Please return you reply in a markdown format.`;
+		
+		/*
+		var system_prompt = `You are an expert technical writer and your task is to prepare a documentation for the workflow, which was created in n8n - a workflow automation tool. You will receive a JSON containing the workflow data. You need to analyse it and prepare a documentation text accoring to the user request. Include the timestamp of the generated documentation page: ${moment().format("DD MMM dddd, YYYY HH:mm")} . Please return you reply in an HTML format without header / body tags, because your reply will be placed inside a <div class="container mt-3"> contanier. You can use Bootstrap 5 styles.`;
+		*/
 		var usertext = {
 			"short":"Please provide the brief description of the workflow. ",
 			"long":"Please provide the detailed description of the workflow. Begin with a paragraph text with the workflow overview. Then continue describing each node in a numbered list. "

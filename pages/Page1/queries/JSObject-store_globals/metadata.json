@@ -28,10 +28,8 @@
         "key": "body"
       }
     ],
-    "isValid": false,
-    "invalids": [
-      "Unable to find plugin 64ab28f2027bc916964a0274"
-    ],
+    "isValid": true,
+    "invalids": [],
     "messages": [],
     "userSetOnLoad": true,
     "confirmBeforeExecute": false,
