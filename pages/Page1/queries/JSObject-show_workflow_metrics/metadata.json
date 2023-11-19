@@ -2,8 +2,8 @@
   "pluginType": "JS",
   "pluginId": "js-plugin",
   "unpublishedAction": {
-    "name": "show_active_wf",
-    "fullyQualifiedName": "JSObject.show_active_wf",
+    "name": "show_workflow_metrics",
+    "fullyQualifiedName": "JSObject.show_workflow_metrics",
     "datasource": {
       "name": "UNUSED_DATASOURCE",
       "pluginId": "js-plugin",
@@ -20,7 +20,11 @@
       "paginationType": "NONE",
       "encodeParamsToggle": true,
       "selfReferencingDataPaths": [],
-      "jsArguments": []
+      "jsArguments": [
+        {
+          "name": "id"
+        }
+      ]
     },
     "executeOnLoad": false,
     "dynamicBindingPathList": [
@@ -36,7 +40,7 @@
     "policies": [],
     "userPermissions": []
   },
-  "id": "Page1_JSObject.show_active_wf",
+  "id": "Page1_JSObject.show_workflow_metrics",
   "deleted": false,
-  "gitSyncId": "6529a7883c26b66c5d6ee48d_655a0c81b4bac23eed9d3106"
+  "gitSyncId": "6529a7883c26b66c5d6ee48d_655a0d21b4bac23eed9d3109"
 }

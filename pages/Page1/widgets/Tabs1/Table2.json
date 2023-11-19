@@ -367,7 +367,7 @@
             "verticalAlignment": "CENTER"
         }
     },
-    "onRowSelected": "{{JSObject.create_workflow_metrics(Table2.selectedRow.id)}}",
+    "onRowSelected": "{{JSObject.show_workflow_metrics(Table2.selectedRow.id)}}",
     "key": "rt1oslhe5z",
     "canFreezeColumn": true,
     "isDeprecated": false,

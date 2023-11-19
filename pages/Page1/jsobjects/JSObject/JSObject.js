@@ -78,7 +78,15 @@ export default {
 	},
 
 
-
+	// calculate wf metrics during the loading time
+	create_workflow_metrics(wf_data) {
+		var wf_metrics = {};
+		wf_metrics.nodes_all = wf_data.nodes.length;
+		wf_metrics.nodes_names = _.uniqBy(wf_data.nodes, 'type').map(obj => obj.type).sort();
+		wf_metrics.nodes_unique = wf_metrics.nodes_names.length;
+		return wf_metrics;
+	},
+	
 	// Prepare an array of all workflows
 	async prepare_workflows () {
 		await n8n_get_wf.run();
@@ -96,7 +104,10 @@ export default {
 		}
 		
 		this.raw_wf_data = all_wf;
-
+		_.each(this.raw_wf_data, function(item) {
+			item.metrics = this.create_workflow_metrics(item);
+		});
+		
 		all_wf = _.map(all_wf, _.partialRight(_.pick, ['name', 'id', 'createdAt', 'updatedAt', 'active']));
 
 		let recent_ids = _.countBy(this.all_executions, 'workflowId');
@@ -112,6 +123,7 @@ export default {
 			item.recent_run= !!recent_ids[item.id];
 			item.urltext = appsmith.store.n8nurl+'/workflow/'+item.id;
 		});
+		
 		return all_wf;
 	},
 
@@ -129,11 +141,25 @@ export default {
 		this.workflow_table = _.filter(this.all_workflows, function(o) { return _.includes(recent_ids, o.id); });
 	},
 	
-	create_workflow_metrics(id) {
+	// show wf metrics in the container widget
+	show_workflow_metrics(id) {
 		var wf_text = "";
+		var wf_data = "";
 		if(id){
-			var wf_text = _.find(this.raw_wf_data, function(obj) { return obj.id == id; });
+			wf_data = _.find(this.raw_wf_data, function(obj) { return obj.id == id; });
+			
+			wf_text += `<b>Name:</b> ${wf_data.name}\n`;
+			wf_text += `<b>ID:</b> ${wf_data.id}\n`;
+			wf_text += `<b>Active:</b> ${wf_data.active.toString()}\n`;
+			wf_text += `\n`;
+			wf_text += `<b>Total Number of Nodes:</b> ${wf_data.metrics.nodes_all}\n`;
+			wf_text += `<b>Unique Nodes:</b> ${wf_data.metrics.nodes_unique}\n`;
+			wf_text += `<b>Node Types:</b> \n`;
+			wf_text += `${wf_data.metrics.nodes_names.map(item => `<a href="https://n8n.io/integrations/${item}" target="_blank" rel="noopener noreferrer">${item}</a>`).join('\n')}\n`;
+			// <a href="https://fas.st/t/idH9ZSyP" target="_blank" rel="noopener noreferrer">n8n</a>
 		}
+		console.log(wf_data);
+		console.log(wf_text);
 		this.workflow_metrics = wf_text;
 		return 1;
 	}

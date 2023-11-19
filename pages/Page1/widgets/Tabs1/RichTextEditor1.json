@@ -51,6 +51,6 @@
     "mobileLeftColumn": 15,
     "maxDynamicHeight": 9000,
     "originalBottomRow": 83,
-    "defaultText": "{{JSObject.workflow_doc}}",
+    "defaultText": "{{JSObject.workflow_docs}}",
     "minDynamicHeight": 4
 }

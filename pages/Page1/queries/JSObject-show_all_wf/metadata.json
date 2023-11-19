@@ -28,8 +28,10 @@
         "key": "body"
       }
     ],
-    "isValid": true,
-    "invalids": [],
+    "isValid": false,
+    "invalids": [
+      "Unable to find plugin 64ab28f2027bc916964a0274"
+    ],
     "messages": [],
     "userSetOnLoad": false,
     "confirmBeforeExecute": false,
@@ -38,5 +40,5 @@
   },
   "id": "Page1_JSObject.show_all_wf",
   "deleted": false,
-  "gitSyncId": "6529a7883c26b66c5d6ee48d_652f1d8a3c26b66c5d6ee4d5"
+  "gitSyncId": "6529a7883c26b66c5d6ee48d_655a07d8b4bac23eed9d30f5"
 }

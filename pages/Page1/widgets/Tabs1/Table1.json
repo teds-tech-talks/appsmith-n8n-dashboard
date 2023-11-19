@@ -26,6 +26,7 @@
     "leftColumn": 0,
     "delimiter": ",",
     "defaultSelectedRowIndex": 0,
+    "showInlineEditingOptionDropdown": true,
     "accentColor": "{{appsmith.theme.colors.primaryColor}}",
     "isVisibleFilters": true,
     "isVisible": true,
@@ -61,7 +62,7 @@
         }
     },
     "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-    "columnUpdatedAt": 1699579835752,
+    "columnUpdatedAt": 1700350696080,
     "originalBottomRow": 56,
     "primaryColumnId": "name",
     "defaultSelectedRowIndices": [0],

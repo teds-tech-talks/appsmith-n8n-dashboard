@@ -51,7 +51,7 @@
         "groupButton3": {
             "onClick": "{{storeValue('tabpage','AutoDoc')}}",
             "buttonType": "SIMPLE",
-            "iconName": "new-drawing",
+            "iconName": "draw",
             "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
             "widgetId": "",
             "menuItems": {

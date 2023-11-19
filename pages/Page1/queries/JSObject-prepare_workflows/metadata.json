@@ -16,7 +16,7 @@
     "pageId": "Page1",
     "collectionId": "Page1_JSObject",
     "actionConfiguration": {
-      "timeoutInMillisecond": 10000,
+      "timeoutInMillisecond": 0,
       "paginationType": "NONE",
       "encodeParamsToggle": true,
       "selfReferencingDataPaths": [],
@@ -31,13 +31,12 @@
     "isValid": true,
     "invalids": [],
     "messages": [],
-    "userSetOnLoad": true,
+    "userSetOnLoad": false,
     "confirmBeforeExecute": false,
     "policies": [],
-    "userPermissions": [],
-    "createdAt": "2023-10-15T00:34:16Z"
+    "userPermissions": []
   },
   "id": "Page1_JSObject.prepare_workflows",
   "deleted": false,
-  "gitSyncId": "6529a7883c26b66c5d6ee48d_652b33883c26b66c5d6ee4b7"
+  "gitSyncId": "6529a7883c26b66c5d6ee48d_655a0c5cb4bac23eed9d3104"
 }
