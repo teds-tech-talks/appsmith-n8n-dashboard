@@ -103,6 +103,7 @@ export default {
 			} else { break; }
 		}
 		
+		// calculate basic wf metrics at the loading time to reduce unnecessary data manipulations
 		this.raw_wf_data = all_wf;
 		_.each(this.raw_wf_data, function(item) {
 			item.metrics = this.create_workflow_metrics(item);
@@ -162,8 +163,57 @@ export default {
 		console.log(wf_text);
 		this.workflow_metrics = wf_text;
 		return 1;
-	}
+	},
+	
+	// 
+	async get_wf_autodoc(id,type="short"){
+		var system_prompt = `You are an expert technical writer and your task is to prepare a documentation for the workflow, which was created in n8n - a workflow automation tool. You will receive a JSON containing the workflow data. You need to analyse it and prepare a documentation text accoring to the user request. Include the timestamp of the generated documentation page: ${moment().format("DD MMM dddd, YYYY HH:mm")} . Please return you reply in a markdown format`;
+		
+		var usertext = {
+			"short":"Please provide the brief description of the workflow. ",
+			"long":"Please provide the detailed description of the workflow. Begin with a paragraph text with the workflow overview. Then continue describing each node in a numbered list. "
+		}
+		
+		var wf_data = _.find(this.raw_wf_data, function(obj) { return obj.id == id; });
+		    wf_data = _.pick(wf_data, ['createdAt', 'updatedAt', 'name', 'active', 'nodes', 'connections']);
+		    wf_data.nodes = _.map(wf_data.nodes, _.partialRight(_.pick, ['parameters', 'name', 'type']));
+		console.log(wf_data);
+				
+		var config_ = {
+			model:"gpt-4-1106-preview",
+			temperature:0.5,
+			messages:[
+				{role:"system","content":system_prompt},
+				{role:"user","content":usertext[type]+"Here is the workflow JSON: ```" + JSON.stringify(wf_data) + "```"}
+			]
+		}
+		
+		console.log(config_);
+		var GPT_autodoc = await Workflow_docs.run(config_);
+		this.workflow_docs = GPT_autodoc.choices[0].message.content;
+		//var GPT_final_req = {};
+		return 1;
+	}, // end of get_wf_autodoc
 
+	prepare_download(data){
+		var pageheader=`<!DOCTYPE html>
+										<html>
+										<head>
+										<meta charset="utf-8">
+										<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+										</head>
+										<body>
+										<div class="container mt-3">`;
+		
+		var pagefooter=`</div>
+										</body>
+										</html>`;
+		
+		return `${pageheader}
+						${data}
+						${pagefooter}`;
+
+	}
 }
 
 

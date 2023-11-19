@@ -2,8 +2,8 @@
   "pluginType": "JS",
   "pluginId": "js-plugin",
   "unpublishedAction": {
-    "name": "show_all_wf",
-    "fullyQualifiedName": "JSObject.show_all_wf",
+    "name": "get_wf_autodoc",
+    "fullyQualifiedName": "JSObject.get_wf_autodoc",
     "datasource": {
       "name": "UNUSED_DATASOURCE",
       "pluginId": "js-plugin",
@@ -16,11 +16,18 @@
     "pageId": "Page1",
     "collectionId": "Page1_JSObject",
     "actionConfiguration": {
-      "timeoutInMillisecond": 10000,
+      "timeoutInMillisecond": 0,
       "paginationType": "NONE",
       "encodeParamsToggle": true,
       "selfReferencingDataPaths": [],
-      "jsArguments": []
+      "jsArguments": [
+        {
+          "name": "type"
+        },
+        {
+          "name": "id"
+        }
+      ]
     },
     "executeOnLoad": false,
     "dynamicBindingPathList": [
@@ -36,7 +43,7 @@
     "policies": [],
     "userPermissions": []
   },
-  "id": "Page1_JSObject.show_all_wf",
+  "id": "Page1_JSObject.get_wf_autodoc",
   "deleted": false,
-  "gitSyncId": "6529a7883c26b66c5d6ee48d_655a07d8b4bac23eed9d30f5"
+  "gitSyncId": "6529a7883c26b66c5d6ee48d_655a8804b4bac23eed9d3115"
 }

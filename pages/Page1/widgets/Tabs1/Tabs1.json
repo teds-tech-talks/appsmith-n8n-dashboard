@@ -7,7 +7,7 @@
     "displayName": "Tabs",
     "iconSVG": "/static/media/icon.9e3d67c0af9c0bd092dc56240314e18a.svg",
     "topRow": 16,
-    "bottomRow": 105,
+    "bottomRow": 101,
     "parentRowSpace": 10,
     "type": "TABS_WIDGET",
     "hideCard": false,
@@ -164,7 +164,7 @@
     "widgetId": "cakplw2gsh",
     "accentColor": "{{appsmith.theme.colors.primaryColor}}",
     "defaultTab": "{{appsmith.store.tabpage}}",
-    "shouldShowTabs": true,
+    "shouldShowTabs": false,
     "minWidth": 450,
     "tabsObj": {
         "tab1": {
@@ -203,6 +203,6 @@
     "borderRadius": "0px",
     "mobileLeftColumn": 0,
     "maxDynamicHeight": 9000,
-    "originalBottomRow": 105,
+    "originalBottomRow": 101,
     "minDynamicHeight": 15
 }
