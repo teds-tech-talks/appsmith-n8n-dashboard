@@ -34,8 +34,7 @@
     "userSetOnLoad": false,
     "confirmBeforeExecute": false,
     "policies": [],
-    "userPermissions": [],
-    "createdAt": "2023-10-17T23:50:02Z"
+    "userPermissions": []
   },
   "id": "Page1_JSObject.prepare_executions",
   "deleted": false,

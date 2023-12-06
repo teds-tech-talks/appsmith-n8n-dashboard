@@ -74,8 +74,7 @@
     "userSetOnLoad": true,
     "confirmBeforeExecute": false,
     "policies": [],
-    "userPermissions": [],
-    "createdAt": "2023-11-09T23:38:20Z"
+    "userPermissions": []
   },
   "id": "Page1_n8n_get_exec_nextpage",
   "deleted": false,

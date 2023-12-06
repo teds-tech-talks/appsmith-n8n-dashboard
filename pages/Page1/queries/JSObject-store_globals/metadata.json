@@ -34,8 +34,7 @@
     "userSetOnLoad": true,
     "confirmBeforeExecute": false,
     "policies": [],
-    "userPermissions": [],
-    "createdAt": "2023-10-15T01:09:38Z"
+    "userPermissions": []
   },
   "id": "Page1_JSObject.store_globals",
   "deleted": false,

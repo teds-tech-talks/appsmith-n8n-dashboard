@@ -66,8 +66,7 @@
     "userSetOnLoad": true,
     "confirmBeforeExecute": false,
     "policies": [],
-    "userPermissions": [],
-    "createdAt": "2023-11-08T13:28:22Z"
+    "userPermissions": []
   },
   "id": "Page1_n8n_get_wf",
   "deleted": false,
